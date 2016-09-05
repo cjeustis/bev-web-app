@@ -1,0 +1,24 @@
+$primary-color: rgb(96,125,139);
+$secondary-color: rgb(255,82,82);
+
+.mdl-layout__header {
+  background-color: $primary-color;
+}
+
+a.mdl-chip.header-link {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+button.mdl-button.mdl-js-button.mdl-button--raised.mdl-button--colored {
+  background-color: $primary-color;
+}
+
+form.mdl-typography--text-center.login-form {
+  margin-top: 20px;
+}
+
+h3.login-form-title {
+  text-align: center;
+  margin-top: 40px;
+}
