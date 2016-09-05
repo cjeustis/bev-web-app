@@ -59,14 +59,17 @@ gulp.task("resources", () => {
 // Copy libraries we need
 gulp.task("libs", () => {
     return gulp.src([
-            'es6-shim/es6-shim.min.js',
-            'systemjs/dist/system-polyfills.js',
-            'systemjs/dist/system.src.js',
-            'reflect-metadata/Reflect.js',
-            'rxjs/**',
-            'zone.js/dist/**',
-            '@angular/**'
-        ], {cwd: "node_modules/**"}) /* Glob required here. */
+            'node_modules/es6-shim/es6-shim.min.js',
+            'node_modules/systemjs/dist/system-polyfills.js',
+            'node_modules/systemjs/dist/system.src.js',
+            'node_modules/reflect-metadata/Reflect.js',
+            'node_modules/rxjs/**',
+            'node_modules/zone.js/dist/**',
+            'node_modules/@angular/**',
+            'node_modules/material-design-lite/material.min.css',
+            'node_modules/material-design-lite/material.min.js',
+            'node_modules/material-design-icons/iconfont/material-icons.css'
+        ], {base: './node_modules/'})
         .pipe(gulp.dest("build/lib"));
 });
 
@@ -86,6 +89,6 @@ gulp.task('watch', () => {
 
 
 // Build out the project
-gulp.task("build", ['sass', 'compile', 'resources', 'libs'], () => {
+gulp.task("build", ['clean', 'sass', 'compile', 'resources', 'libs'], () => {
     console.log("Building the project ...");
 });

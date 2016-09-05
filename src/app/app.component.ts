@@ -4,9 +4,14 @@ import {RouteConfig, RouterLink, ROUTER_DIRECTIVES} from "@angular/router-deprec
 import {TaskListComponent} from "./todo/components/task-list.component";
 import {AboutComponent} from "./about/components/about.components";
 
+import { MDL } from './MaterialDesignLiteUpgradeElement';
+
+declare var __moduleName: string;
+
 @Component({
+  moduleId: __moduleName,
   selector: "app",
-  templateUrl: "./app/app.html",
+  templateUrl: "./app.html",
   directives: [TaskListComponent, AboutComponent, RouterLink, ROUTER_DIRECTIVES]
 })
 @RouteConfig([
