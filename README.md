@@ -1,4 +1,4 @@
-Angular2 with TypeScript and Gulp
+Beverage Web Application featuring Angular2 with TypeScript and Gulp
 =================================
 
 Prerequisites
