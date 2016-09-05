@@ -16,7 +16,7 @@ const concat = require("gulp-concat")
 
 // Clean dist folder
 gulp.task('clean', (cb) => {
-    return del(["build"], cb);
+    return del(["dist"], cb);
 });
 
 
@@ -26,7 +26,7 @@ gulp.task('sass', () => {
         .pipe(sass().on('error', sass.logError))
         .pipe(concat('main.css'))
         .pipe(sass({outputStyle: 'expanded'}))
-        .pipe(gulp.dest('build/css'));
+        .pipe(gulp.dest('dist/css'));
 });
 
 
@@ -45,14 +45,14 @@ gulp.task("compile", ["tslint"], () => {
         .pipe(tsc(tsProject));
     return tsResult.js
         .pipe(sourcemaps.write("."))
-        .pipe(gulp.dest("build"));
+        .pipe(gulp.dest("dist"));
 });
 
 
 // Copy all other files
 gulp.task("resources", () => {
     return gulp.src(["src/**/*", "!**/*.ts", "!**/*.scss"])
-        .pipe(gulp.dest("build"));
+        .pipe(gulp.dest("dist"));
 });
 
 
@@ -70,7 +70,7 @@ gulp.task("libs", () => {
             'node_modules/material-design-lite/material.min.js',
             'node_modules/material-design-icons/iconfont/material-icons.css'
         ], {base: './node_modules/'})
-        .pipe(gulp.dest("build/lib"));
+        .pipe(gulp.dest("dist/lib"));
 });
 
 
@@ -89,6 +89,6 @@ gulp.task('watch', () => {
 
 
 // Build out the project
-gulp.task("build", ['clean', 'sass', 'compile', 'resources', 'libs'], () => {
+gulp.task("debug", ['sass', 'compile', 'resources', 'libs'], () => {
     console.log("Building the project ...");
 });

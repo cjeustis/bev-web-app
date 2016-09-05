@@ -15,6 +15,7 @@ declare var __moduleName: string;
   templateUrl: "./app.html",
   directives: [SignupComponent, SigninComponent, RouterLink, ROUTER_DIRECTIVES]
 })
+
 @RouteConfig([
   {path: '/', component: DashboardComponent, as: 'Home', useAsDefault: true},
   {path: '/signin', component: SigninComponent, as: 'SignIn'},
