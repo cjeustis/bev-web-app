@@ -1,12 +1,24 @@
 {
   "rules": {
+    "only-arrow-functions": true,
+    "arrow-parens": true,
+    "interface-name": true,
+    "no-angle-bracket-type-assertion": true,
+    "no-consecutive-blank-lines": true,
+    "one-variable-per-declaration": true,
+    "ordered-imports": true,
+    "quotemark": [
+      true,
+      "single",
+      "avoid-escape"
+    ],
     "class-name": true,
     "curly": true,
-    "eofline": false,
+    "eofline": true,
     "forin": true,
     "indent": [
       true,
-      4
+      2
     ],
     "label-position": true,
     "label-undefined": true,
@@ -35,6 +47,7 @@
     "no-unused-variable": false,
     "no-unreachable": true,
     "no-use-before-declare": true,
+    "no-var-keyword": true,
     "one-line": [
       true,
       "check-open-brace",
@@ -43,18 +56,30 @@
       "check-whitespace"
     ],
     "radix": true,
-    "semicolon": true,
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "switch-default": true,
     "triple-equals": [
       true,
       "allow-null-check"
     ],
-    "variable-name": false,
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ],
     "whitespace": [
       true,
       "check-branch",
       "check-decl",
       "check-operator",
-      "check-separator"
+      "check-module",
+      "check-separator",
+      "check-type",
+      "check-typecast"
     ]
   }
 }

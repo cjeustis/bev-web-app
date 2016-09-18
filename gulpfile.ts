@@ -68,7 +68,8 @@ gulp.task("libs", () => {
             'node_modules/@angular/**',
             'node_modules/material-design-lite/material.min.css',
             'node_modules/material-design-lite/material.min.js',
-            'node_modules/material-design-icons/iconfont/material-icons.css'
+            'node_modules/material-design-icons/iconfont/material-icons.css',
+            'node_modules/chart.js/dist/Chart.js'
         ], {base: './node_modules/'})
         .pipe(gulp.dest("dist/lib"));
 });

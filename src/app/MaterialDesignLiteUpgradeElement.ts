@@ -1,4 +1,4 @@
-import {Directive, AfterViewChecked} from '@angular/core';
+import {AfterViewChecked, Directive} from '@angular/core';
 
 declare var componentHandler: any;
 
