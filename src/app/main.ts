@@ -9,5 +9,6 @@ import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
 
 bootstrap(AppComponent, [
   ROUTER_PROVIDERS,
-  provide(LocationStrategy, {useClass: HashLocationStrategy})
+  provide(LocationStrategy,
+  {useClass: HashLocationStrategy})
 ]);

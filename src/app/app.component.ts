@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RouteConfig, ROUTER_DIRECTIVES, RouterLink} from '@angular/router-deprecated';
 
 import {DashboardComponent} from './dashboard/dashboard.component';
+// import {GraphService} from './graphService/graph.service';
 import {SigninComponent} from './signIn/signin.component';
 import {SignupComponent} from './signUp/signup.component';
 
@@ -13,7 +14,8 @@ declare var __moduleName: string;
   directives: [ROUTER_DIRECTIVES, RouterLink, SignupComponent, SigninComponent],
   moduleId: __moduleName,
   selector: 'app',
-  templateUrl: './app.html'
+  templateUrl: './app.html',
+  // providers: [GraphService]
 })
 
 @RouteConfig([
@@ -22,7 +24,12 @@ declare var __moduleName: string;
   {as: 'SignUp', component: SignupComponent, path: '/signup'}
 ])
 export class AppComponent implements OnInit {
+
+  // constructor(private graphService: GraphService) {
+
+  // }
+
   ngOnInit() {
-    console.log('Application component initialized ...');
+
   }
 }

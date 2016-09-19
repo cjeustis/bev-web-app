@@ -1,44 +1,58 @@
+import {GraphService} from '../graphService/graph.service';
 import {Component} from '@angular/core';
 import {OnInit} from '@angular/core';
 
 @Component({
-    templateUrl: './app/dashboard/dashboard.html'
+  templateUrl: './app/dashboard/dashboard.html',
+  providers: [GraphService]
 })
 
 export class DashboardComponent implements OnInit {
 
-    private _times: [string];
-    private _temps: [number];
+  private _times: [string];
+  private _temps: [number];
 
-    ngOnInit() {
-        // Initialize data for graph - todo: connect to db
-        this._times = ['1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM'];
-        this._temps = [60, 80, 75, 50, 65, 60];
+  constructor(private graphService: GraphService) {
 
-        this.create_chart();
-    }
+  }
 
-    private create_chart() {
-        // Get HTML element
-        let ctx = document.getElementById('temp-graph') as HTMLCanvasElement;
-        let context = ctx.getContext('2d');
+  ngOnInit() {
+    this.graphService.create_chart('temp-graph', 'line');
+    let index = 0;
 
-        // Graph data source
-        let data: LinearChartData = {
-            labels: this._times,
-            datasets: [{
-                data: this._temps,
-                fillColor: 'rgba(96,125,139,0.2)',
-                label: 'Temperature',
-                strokeColor: 'rgba(96,125,139,1)'
-            }]
-        };
+    window.setInterval(() => {
+      this.graphService.update_chart(this.getRandomData(), this.getNextSixTimes(index));
+      index += 6;
+      if (index === 24) {
+        index = 0;
+      }
+    }, 6000);
+  }
 
-        // Make the graph
-        let myChart = new Chart(context, {
-            type: 'line',
-            data: data,
-            options: null
-        });
-    }
+  private getNextSixTimes(startIndex: number) {
+    let times = ['12:00 AM', '1:00 AM', '2:00 AM', '3:00 AM', '4:00 AM', '5:00 AM', '6:00 AM',
+                 '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM',
+                 '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM',
+                 '9:00 PM', '10:00 PM', '11:00 PM', '12:00 PM'];
+
+    return [
+      times[startIndex],
+      times[startIndex + 1],
+      times[startIndex + 2],
+      times[startIndex + 3],
+      times[startIndex + 4],
+      times[startIndex + 5]
+    ];
+  }
+
+  private getRandomData() {
+    return [
+      Math.floor((Math.random() * 80) + 30),
+      Math.floor((Math.random() * 80) + 30),
+      Math.floor((Math.random() * 80) + 30),
+      Math.floor((Math.random() * 80) + 30),
+      Math.floor((Math.random() * 80) + 30),
+      Math.floor((Math.random() * 80) + 30)
+    ];
+  }
 }
