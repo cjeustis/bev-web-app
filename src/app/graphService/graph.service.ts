@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 interface IChartData {
   context: CanvasRenderingContext2D;
   properties: LinearChartData;
-  chart: any;
+  chart: any; // Strict type caused issues?
   data: number[];
   labels: string[];
 };
@@ -47,7 +47,6 @@ export class GraphService {
     this.setChartContext(elementName);
     this.setChartProperties();
 
-    // Make the graph
     this._chartData.chart = new Chart(this._chartData.context, {
         type: graphType,
         data: this._chartData.properties,

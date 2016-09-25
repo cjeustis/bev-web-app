@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {RouteConfig, ROUTER_DIRECTIVES, RouterLink} from '@angular/router-deprecated';
 
 import {DashboardComponent} from './dashboard/dashboard.component';
-// import {GraphService} from './graphService/graph.service';
+import {RecipesComponent} from './recipes/recipes.component';
 import {SigninComponent} from './signIn/signin.component';
 import {SignupComponent} from './signUp/signup.component';
 
@@ -15,21 +15,20 @@ declare var __moduleName: string;
   moduleId: __moduleName,
   selector: 'app',
   templateUrl: './app.html',
-  // providers: [GraphService]
 })
 
 @RouteConfig([
   {as: 'Home', component: DashboardComponent, path: '/', useAsDefault: true},
   {as: 'SignIn', component: SigninComponent, path: '/signin'},
-  {as: 'SignUp', component: SignupComponent, path: '/signup'}
+  {as: 'SignUp', component: SignupComponent, path: '/signup'},
+  {as: 'Recipes', component: RecipesComponent, path: '/recipes'}
 ])
+
 export class AppComponent implements OnInit {
 
-  // constructor(private graphService: GraphService) {
-
-  // }
+  public authenticated: boolean;
 
   ngOnInit() {
-
+    this.authenticated = true;
   }
 }

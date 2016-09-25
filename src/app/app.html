@@ -1,4 +1,4 @@
-<div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
       
@@ -8,16 +8,16 @@
       
       <nav class="mdl-navigation mdl-layout--large-screen-only">
         <a class="mdl-navigation__link" href="" [routerLink]="['Home']">Home</a>
-        <a class="mdl-navigation__link" href="" [routerLink]="['SignIn']">Sign In</a>
-        <a class="mdl-navigation__link" href="" [routerLink]="['SignUp']">Sign Up</a>
+        <a class="mdl-navigation__link" href="" [hidden]="!authenticated" [routerLink]="['SignIn']">Sign In</a>
+        <a class="mdl-navigation__link" href="" [hidden]="!authenticated" [routerLink]="['SignUp']">Sign Up</a>
+        <a class="mdl-navigation__link" href="" [hidden]="authenticated" [routerLink]="['Home']">Sign Out</a>
+        <a class="mdl-navigation__link" href="" [hidden]="!authenticated" [routerLink]="['Recipes']">Recipes</a>
       </nav>
     </div>
   </header>
 
   <main class="mdl-layout__content">
-    <div class="page-content">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
   </main>
 
 </div>

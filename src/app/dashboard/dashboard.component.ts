@@ -1,6 +1,5 @@
 import {GraphService} from '../graphService/graph.service';
-import {Component} from '@angular/core';
-import {OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   templateUrl: './app/dashboard/dashboard.html',
