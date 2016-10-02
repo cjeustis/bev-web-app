@@ -11,7 +11,7 @@ import { MDL } from './MaterialDesignLiteUpgradeElement';
 declare var __moduleName: string;
 
 @Component({
-  directives: [ROUTER_DIRECTIVES, RouterLink, SignupComponent, SigninComponent],
+  directives: [MDL, ROUTER_DIRECTIVES, RouterLink, SignupComponent, SigninComponent],
   moduleId: __moduleName,
   selector: 'app',
   templateUrl: './app.html',
