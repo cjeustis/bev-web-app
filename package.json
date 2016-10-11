@@ -31,6 +31,8 @@
     "zone.js": "^0.6.12"
   },
   "devDependencies": {
+    "@angular/common": "^2.0.0-rc.1",
+    "@angular/core": "^2.0.0-rc.1",
     "concurrently": "^2.0.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
