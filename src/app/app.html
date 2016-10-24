@@ -1,28 +1,4 @@
-<div mdl class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-  <header class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      
-      <span class="mdl-layout-title">Automated Beverages</span>
-      
-      <div class="mdl-layout-spacer"></div>
-      
-      <nav class="mdl-navigation mdl-layout--large-screen-only">
-        <a class="mdl-navigation__link" href="" [routerLink]="['Home']">Home</a>
-        <a class="mdl-navigation__link" href="" [hidden]="!authenticated" [routerLink]="['SignIn']">Sign In</a>
-        <a class="mdl-navigation__link" href="" [hidden]="!authenticated" [routerLink]="['SignUp']">Sign Up</a>
-        <a class="mdl-navigation__link" href="" [hidden]="authenticated" [routerLink]="['Home']">Sign Out</a>
-        <a class="mdl-navigation__link" href="" [hidden]="!authenticated" [routerLink]="['Recipes']">Recipes</a>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Drawer -->
-  <div class="mdl-layout__drawer">
-    <div class="center">TEST</div>
-  </div>
-
-  <main class="mdl-layout__content">
-    <router-outlet></router-outlet>
-  </main>
-
+<as-navbar [brand]="appBrand"></as-navbar>
+<div class="container" style="margin-top: 100px;">
+	<router-outlet></router-outlet>
 </div>

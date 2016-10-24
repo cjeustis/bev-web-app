@@ -1,12 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  templateUrl: './app/recipes/recipes.html',
+  templateUrl: 'app/recipes/recipes.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-
-export class RecipesComponent implements OnInit {
-
-  ngOnInit() {
-
-  }
+export class RecipesComponent {
 }

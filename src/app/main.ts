@@ -1,14 +1,12 @@
-/* Avoid: 'error TS2304: Cannot find name <type>' during compilation */
-///<reference path='../../typings/index.d.ts'/>
+import { enableProdMode } from '@angular/core';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import {AppComponent} from './app.component';
-import {HashLocationStrategy, LocationStrategy} from '@angular/common';
-import {provide} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {ROUTER_PROVIDERS} from '@angular/router-deprecated';
+import { AppModule } from './app.module';
 
-bootstrap(AppComponent, [
-  ROUTER_PROVIDERS,
-  provide(LocationStrategy,
-  {useClass: HashLocationStrategy})
-]);
+declare var ENV: string;
+
+if (ENV === 'production') {
+  enableProdMode();
+}
+
+platformBrowserDynamic().bootstrapModule(AppModule);

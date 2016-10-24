@@ -1,42 +1,66 @@
 <html>
-<head>
-  <base href="/">
-  <title>Automated Beverages</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Begin Header -->
+  <head>
+    <title>MyPotum</title>
 
-  <!-- Main style sheet -->
-  <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="lib/material-design-lite/material.min.css">
-  <script src="lib/material-design-lite/material.min.js"></script>
-  <link rel="stylesheet" href="lib/material-design-icons/iconfont/material-icons.css">
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-  <script src="lib/chart.js/dist/Chart.js"></script>
+    <!-- build:css assets/bundle.css -->
+    <link rel="stylesheet" href="../node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../node_modules/material-design-lite/material.min.css">
+    <link rel="stylesheet" href="../node_modules/material-design-icons/iconfont/material-icons.css">
 
-  <!-- Polyfill(s) for older browsers -->
-  <script src="lib/es6-shim/es6-shim.min.js"></script>
+    <!-- app:css -->
+    <link rel="stylesheet" href="/assets/styles/main.css">
+    <!-- endinject -->
+    <!-- endbuild -->
 
-  <script src="lib/zone.js/dist/zone.js"></script>
-  <script src="lib/reflect-metadata/Reflect.js"></script>
-  <script src="lib/systemjs/dist/system.src.js"></script>
+  </head>
+  <!-- End Header -->
 
-  <script src="systemjs.config.js"></script>
-  <script>
-    System.import('app')
-      .then(null, console.error.bind(console));
-  </script>
 
-</head>
+  <!-- Begin Body -->
+  <body>
 
-<body>
-  <app>
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-      <main class="mdl-layout__content">
-        <form class="mdl-typography--text-center" style="margin-top: 25px;" action="#">
-          <div class="mdl-spinner mdl-spinner--single-color mdl-js-spinner is-active"></div>
-        </form>
-      </main>
-    </div>
-  </app>
-</body>
+    <!-- Our application's' point of injection -->
+    <as-app>
+      <i class="center-fix main-spinner fa fa-spin fa-spinner"></i>
+    </as-app>
 
+    <!-- build:js assets/lib.js -->
+
+    <!-- Non-module JS libs -->
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+    <script src="../node_modules/material-design-lite/material.min.js"></script>
+    <script src="../node_modules/chart.js/dist/Chart.js"></script>
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="../node_modules/core-js/client/shim.min.js"></script>
+
+    <!-- Load libraries -->
+    <script src="../node_modules/zone.js/dist/zone.js"></script>
+
+    <!-- endbuild -->
+
+    <!-- build:js assets/app.js -->
+    <script src="tmp/app/bundle.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:remove -->
+    <script src="../node_modules/systemjs/dist/system.js"></script>
+    <script src="systemjs.conf.js"></script>
+    <script>
+      System.import('app/main.js')
+        .then(() => {
+          console.log('Loaded successfully');
+        }).catch((err) => {
+          console.error(err);
+        });
+    </script>
+    <!-- endbuild -->
+  </body>
+  <!-- End Body -->
 </html>
