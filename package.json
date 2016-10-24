@@ -60,7 +60,6 @@
     "lodash": "^4.15.0",
     "material-design-icons": "^3.0.1",
     "material-design-lite": "^1.2.0",
-    "phantomjs-prebuilt": "^2.1.12",
     "remap-istanbul": "~0.6.4",
     "require-dir": "~0.3.0",
     "run-sequence": "~1.2.2",
