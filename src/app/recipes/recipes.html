@@ -1,114 +1,49 @@
 <style>
-  div.mdl-cell.mdl-cell--8-col > table {
+  .content-grid.mdl-grid {
+    margin: auto;
+  }
+  .mdl-cell {
+    margin-right: 10px;
+    padding: 20px;
+    background-color: #f3f3f3;
+    width: calc(calc(100% - 100px) / 4);
+    min-width: 150px;
+  }
+  @media screen and (max-width: 1024px) {
+    .mdl-cell {
+      padding: 20px;
+      background-color: #f3f3f3;
+      width: calc(calc(100% - 100px) / 2);
+      min-width: 200px;
+    }
+  }
+  img {
     width: 100%;
-  }
-
-  div.mdl-data-table {
-    width: 100%;
-    overflow: scroll;
-  }
-
-  div.mdl-cell.mdl-cell--8-col {
-    width: calc(100% - 116px);
-    max-height: calc(100% - 130px);
-    overflow: overlay;
-  }
-
-  div.mdl-cell {
-    overflow: hidden;
-  }
-
-  div.mdl-layout-spacer.table-space {
-    max-width: 50px;
   }
 </style>
 
-<div class="mdl-grid">
-  <div class="mdl-layout-spacer table-space"></div>
-  <div class="mdl-cell mdl-cell--8-col mdl-shadow--2dp ">
-    <table class="mdl-data-table mdl-js-data-table center">
-      <thead>
-        <tr>
-          <th style="padding-left: 0px"></th>
-          <th class="mdl-data-table__cell--non-numeric">Recipe Name</th>
-          <th class="mdl-data-table__cell--non-numeric">Ingredient One</th>
-          <th class="mdl-data-table__cell--non-numeric">Amount One</th>
-          <th class="mdl-data-table__cell--non-numeric">Ingredient Two</th>
-          <th class="mdl-data-table__cell--non-numeric">Amount Two</th>
-          <th class="mdl-data-table__cell--non-numeric">Ingredient Three</th>
-          <th class="mdl-data-table__cell--non-numeric">Amount Three</th>
-          <th class="mdl-data-table__cell--non-numeric">Ingredient Four</th>
-          <th class="mdl-data-table__cell--non-numeric">Amount Four</th>
-          <th class="mdl-data-table__cell--non-numeric">Ingredient Five</th>
-          <th class="mdl-data-table__cell--non-numeric">Amount Five</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="padding-left: 0px">
-            <button class="mdl-button mdl-js-button mdl-button--raised material-icons">
-              mode_edit
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised material-icons">
-              delete
-            </button>
-          </td>
-          <td class="mdl-data-table__cell--non-numeric">Rec One</td>
-          <td>Ing One</td>
-          <td>1.0</td>
-          <td>Ing Two</td>
-          <td>2.0</td>
-          <td>Ing Three</td>
-          <td>3.0</td>
-          <td>Ing Four</td>
-          <td>4.0</td>
-          <td>Ing Five</td>
-          <td>5.0</td>
-        </tr>
-        <tr>
-          <td style="padding-left: 0px">
-            <button class="mdl-button mdl-js-button mdl-button--raised material-icons">
-              mode_edit
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised material-icons">
-              delete
-            </button>
-          </td>
-          <td class="mdl-data-table__cell--non-numeric">Rec Two</td>
-          <td>Ing One</td>
-          <td>1.0</td>
-          <td>Ing Two</td>
-          <td>2.0</td>
-          <td>Ing Three</td>
-          <td>3.0</td>
-          <td>Ing Four</td>
-          <td>4.0</td>
-          <td>Ing Five</td>
-          <td>5.0</td>
-        </tr>
-        <tr>
-          <td style="padding-left: 0px">
-            <button class="mdl-button mdl-js-button mdl-button--raised material-icons">
-              mode_edit
-            </button>
-            <button class="mdl-button mdl-js-button mdl-button--raised material-icons">
-              delete
-            </button>
-          </td>
-          <td class="mdl-data-table__cell--non-numeric">Rec Three</td>
-          <td>Ing One</td>
-          <td>1.0</td>
-          <td>Ing Two</td>
-          <td>2.0</td>
-          <td>Ing Three</td>
-          <td>3.0</td>
-          <td>Ing Four</td>
-          <td>4.0</td>
-          <td>Ing Five</td>
-          <td>5.0</td>
-        </tr>
-      </tbody>
-    </table>
+<div class="content-grid mdl-grid">
+
+  <div *ngFor="let recipe of recipes" class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+    <figure class="mdl-card__media">
+      <img src="{{ recipe.imgUrl }}" alt="" />
+    </figure>
+    <div class="mdl-card__title">
+      <h1 class="mdl-card__title-text">{{ recipe.name }}</h1>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <h5>Ingredients:</h5>
+      <span>
+        <ul>
+          <li *ngFor="let ingredient of recipe.ingredients">
+            {{ ingredient }}
+          </li>
+        </ul>
+      </span>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">More...</a>
+    </div>
   </div>
-  <div class="mdl-layout-spacer table-space"></div>
+
 </div>

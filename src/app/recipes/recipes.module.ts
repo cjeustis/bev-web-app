@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { RecipesComponent } from './index';
 
@@ -8,7 +9,8 @@ import { RecipesComponent } from './index';
     RecipesComponent
   ],
   imports: [
-    RouterModule
+    RouterModule,
+    CommonModule
   ],
   exports: [
     RecipesComponent
