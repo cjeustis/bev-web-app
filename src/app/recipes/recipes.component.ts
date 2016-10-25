@@ -12,7 +12,7 @@ interface IRecipe {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecipesComponent {
-  public recipes = [] as IRecipe[];
+  private _recipes = [] as IRecipe[];
 
   constructor() {
     // Create a couple recipes
@@ -37,8 +37,15 @@ export class RecipesComponent {
       imgUrl: 'http://therumpus.net/wp-content/uploads/2015/06/RiG6yG9oT.png'
     };
 
-    this.recipes.push(recipe1);
-    this.recipes.push(recipe2);
+    this._recipes.push(recipe1);
+    this._recipes.push(recipe2);
   }
+
+  /*
+    TODO: Call the API with the user id to get all recipes
+  */
+  // private getRecipesForUser() {
+
+  // }
 
 }

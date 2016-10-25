@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { SignUpComponent } from './index';
@@ -10,6 +10,7 @@ import { SignUpComponent } from './index';
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     RouterModule
   ],
   exports: [
