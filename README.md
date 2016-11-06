@@ -1,6 +1,6 @@
 # MyPotum
 
-### Included in the package
+### Included
 * [npm](https://www.npmjs.com/) - Package Manager
 * [TypeScript](http://www.typescriptlang.org/) - Language
   * with [Typings](https://github.com/typings/typings) - Typescript Definitions
@@ -12,8 +12,7 @@
 
 
 ## Prerequisites
-[Node.js](https://nodejs.org/en/)
-[Global Gulp CLI](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
+[Node.js](https://nodejs.org/en/) & [Global Gulp CLI](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md)
 
 ## Installation
 Clone the repository

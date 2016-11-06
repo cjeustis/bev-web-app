@@ -1,13 +1,16 @@
 <div class="jumbotron">
     <h2>User Login</h2>
+    <div [hidden]="!_response" class="alert alert-danger">{{ _response }}</div>
     <form [formGroup]="_loginForm" (ngSubmit)="loginUser(_loginForm.value)">
       <div class="form-group" >
         <label>Username:</label>
         <input class="form-control" type="text" placeholder="Username..." [formControl]="_loginForm.controls['username']">
+        <div [hidden]="_loginForm.controls['username'].valid || _loginForm.controls['username'].pristine" class="alert alert-danger">Username is required</div>
       </div>
       <div class="form-group">
         <label>Password</label>
         <input class="form-control" type="password" placeholder="Password..." [formControl]="_loginForm.controls['password']">
+        <div [hidden]="_loginForm.controls['password'].valid || _loginForm.controls['password'].pristine" class="alert alert-danger">Password is required</div>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary" [disabled]="!_loginForm.valid">Submit</button>

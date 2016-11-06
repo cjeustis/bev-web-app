@@ -34,6 +34,7 @@
     "@ngstarter/systemjs-extension": "1.0.0-rc.4",
     "@types/chart.js": "^0.0.6",
     "@types/core-js": "^0.9.34",
+    "@types/jquery": "^2.0.33",
     "@types/lodash": "^4.14.37",
     "bootstrap": "^3.3.7",
     "bootstrap-sass": "^3.3.7",

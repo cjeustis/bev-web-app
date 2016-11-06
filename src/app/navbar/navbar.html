@@ -14,11 +14,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <li><a [routerLink]="['/temperature']">Temperature</a></li>
-        <li><a [routerLink]="['/recipes']">Recipes</a></li>
-        <li><a [routerLink]="['/signin']">Sign In</a></li>
-        <li><a [routerLink]="['/signup']">Sign Up</a></li>
-        <li><a [routerLink]="['/signout']">Sign Out</a></li>
+        <li><a [routerLink]="['/temperature']" [hidden]="!userService.authenticated">Temperature</a></li>
+        <li><a [routerLink]="['/recipes']" [hidden]="!userService.authenticated">Recipes</a></li>
+        <li><a [routerLink]="['/signin']" [hidden]="userService.authenticated">Sign In</a></li>
+        <li><a [routerLink]="['/signup']" [hidden]="userService.authenticated">Sign Up</a></li>
+        <li><a (click)="signOut()" [hidden]="!userService.authenticated">Sign Out</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

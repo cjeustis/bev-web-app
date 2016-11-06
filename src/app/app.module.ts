@@ -10,12 +10,14 @@ import { TempPlotModule } from './temp-plot/temp-plot.module';
 import { SignUpModule } from './signup/signup.module';
 import { SignInModule } from './signin/signin.module';
 import { RecipesModule } from './recipes/recipes.module';
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    HttpModule,
     BrowserModule,
     NavbarModule,
     HomeModule,

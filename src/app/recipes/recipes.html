@@ -24,7 +24,7 @@
 
 <div class="content-grid mdl-grid">
 
-  <div *ngFor="let recipe of _recipes" class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
+  <div *ngFor="let recipe of _user.recipes" class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
     <figure class="mdl-card__media">
       <img src="{{ recipe.imgUrl }}" alt="" />
     </figure>
@@ -36,7 +36,7 @@
       <span>
         <ul>
           <li *ngFor="let ingredient of recipe.ingredients">
-            {{ ingredient }}
+            {{ ingredient.name }}
           </li>
         </ul>
       </span>

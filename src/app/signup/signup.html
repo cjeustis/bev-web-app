@@ -1,5 +1,6 @@
 <div class="jumbotron">
     <h2>User Registration</h2>
+    <div [hidden]="!_response" class="alert alert-danger">{{ _response }}</div>
     <form [formGroup]="_registerForm" (ngSubmit)="registerUser(_registerForm.value)">
       <div class="form-group" >
         <label>Username:</label>
