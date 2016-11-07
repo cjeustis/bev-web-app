@@ -113,7 +113,7 @@ export class UserService {
   }
 
   /* Allow access to the currently logged-in user */
-  public getUser() {
+  public getUser(): IUser {
     return this._user;
   }
 }
