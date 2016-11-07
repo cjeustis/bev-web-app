@@ -60,7 +60,7 @@ export class UserService {
         this._user = res.json().user;
         this._token = res.json().token;
         this.authenticated = true;
-        return res.json();
+        return this._user;
       })
       .catch((error: any) => {
         console.log('error: ', error);
@@ -87,7 +87,7 @@ export class UserService {
         this._user = res.json().user;
         this._token = res.json().token;
         this.authenticated = true;
-        return res.json();
+        return this._user;
       })
       .catch((error: any) => {
         return Observable.throw(error.json().error || 'Unable to complete request.');
