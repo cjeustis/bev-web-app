@@ -9,7 +9,7 @@ import { HomeModule } from './home/home.module';
 import { TempPlotModule } from './temp-plot/temp-plot.module';
 import { SignUpModule } from './signup/signup.module';
 import { SignInModule } from './signin/signin.module';
-import { RecipesModule } from './recipes/recipes.module';
+import { RecipesModule } from './recipes/recipe-list/recipe-list.module';
 import { HttpModule } from '@angular/http';
 
 @NgModule({

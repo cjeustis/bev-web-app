@@ -1,9 +1,9 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { UserService, IUser } from '../userProvider/user.provider';
+import { UserService, IUser } from '../../userProvider/user.provider';
 
 @Component({
   selector: 'as-recipes',
-  templateUrl: 'app/recipes/recipes.html',
+  templateUrl: 'app/recipes/recipe-list/recipe-list.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 

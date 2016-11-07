@@ -13,7 +13,7 @@ interface IRegisterForm {
 @Component({
   selector: 'as-signup',
   templateUrl: 'app/signup/signup.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class SignUpComponent implements OnInit {
   private _registerForm: FormGroup;

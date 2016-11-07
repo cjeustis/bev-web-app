@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { RecipesComponent } from './index';
+import { RecipesComponent } from '../index';
 
 @NgModule({
   declarations: [

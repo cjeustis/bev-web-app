@@ -37,6 +37,7 @@ export class UserService {
   public authenticated: boolean = false;
   private _user: IUser;
   private _apiUrl: string = 'http://localhost:8888/api/users';
+  private _token: string;
 
   constructor(private http: Http) {
   }
@@ -50,19 +51,20 @@ export class UserService {
 
     let options = new RequestOptions({
       headers: new Headers({
-      'Content-type': 'application/json'
+        'Content-type': 'application/json'
       })
     });
 
     return this.http.post(this._apiUrl + '/login', params, options)
       .map((res: Response) => {
-        this._user = res.json();
-        console.log('user set: ', this._user);
+        this._user = res.json().user;
+        this._token = res.json().token;
         this.authenticated = true;
         return res.json();
       })
       .catch((error: any) => {
-        return Observable.throw(error.json().error || 'Server error');
+        console.log('error: ', error);
+        return Observable.throw(error.json().message || 'Unable to complete request.');
       });
   }
 
@@ -82,26 +84,31 @@ export class UserService {
 
     return this.http.post(this._apiUrl + '/register', params, options)
       .map((res: Response) => {
-        this._user = res.json();
-        console.log('user created: ', this._user);
+        this._user = res.json().user;
+        this._token = res.json().token;
         this.authenticated = true;
         return res.json();
       })
       .catch((error: any) => {
-        return Observable.throw(error.json().error || 'Server error');
+        return Observable.throw(error.json().error || 'Unable to complete request.');
       });
   }
 
   /* Log out a user - redirects to home */
   public signOutUser(): Observable<any> {
-    return this.http.post(this._apiUrl + '/' + this._user.id + '/logout', null, null)
+    let options = new RequestOptions({
+      headers: new Headers({
+        'Content-type': 'application/json',
+        'Auth-Token': this._token
+      })
+    });
+    return this.http.post(this._apiUrl + '/' + this._user.id + '/logout', null, options)
       .map((res: Response) => {
-        console.log('user logged out: ', res);
         this.authenticated = false;
         return res.json();
       })
       .catch((error: any) => {
-        return Observable.throw(error.json().error || 'Server error');
+        return Observable.throw(error.json().error || 'Unable to complete request.');
       });
   }
 

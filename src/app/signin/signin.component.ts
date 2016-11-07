@@ -11,7 +11,7 @@ interface ILoginForm {
 @Component({
   selector: 'as-signin',
   templateUrl: 'app/signin/signin.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
 
 export class SignInComponent implements OnInit {
