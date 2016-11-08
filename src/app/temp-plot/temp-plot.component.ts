@@ -9,7 +9,6 @@ import {Component, OnInit} from '@angular/core';
 export class TempPlotComponent implements OnInit {
 
   constructor(private _graphService: GraphService) {
-
   }
 
   ngOnInit() {
