@@ -18,11 +18,11 @@ export class SignInComponent implements OnInit {
   private _loginForm: FormGroup;
   private _response: string;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
+  constructor(private _fb: FormBuilder, private _userService: UserService, private _router: Router) {
   }
 
   ngOnInit() {
-    this._loginForm = this.fb.group({
+    this._loginForm = this._fb.group({
       'username': [null, Validators.required],
       'password': [null, Validators.compose([Validators.required, Validators.minLength(4)])],
     });
@@ -30,9 +30,9 @@ export class SignInComponent implements OnInit {
 
 
   public loginUser(data: ILoginForm) {
-    this.userService.loginUser(data.username, data.password)
+    this._userService.loginUser(data.username, data.password)
       .subscribe((user: IUser) => {
-        this.router.navigateByUrl('recipes');
+        this._router.navigateByUrl('recipes');
       }, (err: any) => {
         this._response = err;
         console.log(err);

@@ -11,14 +11,14 @@ import { Router } from '@angular/router';
 export class UpdateRecipeComponent implements OnInit {
   private _user: IUser;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private _userService: UserService, private _router: Router) {
   }
 
   ngOnInit() {
     // Get the user so we can show their recipes
-    this._user = this.userService.getUser();
+    this._user = this._userService.getUser();
     if (!this._user) {
-      this.router.navigateByUrl('');
+      this._router.navigateByUrl('');
       return;
     }
   }

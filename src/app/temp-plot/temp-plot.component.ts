@@ -8,16 +8,16 @@ import {Component, OnInit} from '@angular/core';
 
 export class TempPlotComponent implements OnInit {
 
-  constructor(private graphService: GraphService) {
+  constructor(private _graphService: GraphService) {
 
   }
 
   ngOnInit() {
-    this.graphService.create_chart('temp-graph', 'line');
+    this._graphService.create_chart('temp-graph', 'line');
     let index = 0;
 
     window.setInterval(() => {
-      this.graphService.update_chart(this.getRandomData(), this.getNextSixTimes(index));
+      this._graphService.update_chart(this.getRandomData(), this.getNextSixTimes(index));
       index += 6;
       if (index === 24) {
         index = 0;

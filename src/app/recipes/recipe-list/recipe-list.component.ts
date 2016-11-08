@@ -11,20 +11,20 @@ import { Router } from '@angular/router';
 export class RecipesComponent implements OnInit {
   private _recipes: IRecipe[];
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private _userService: UserService, private _router: Router) {
   }
 
   ngOnInit() {
     // Get the user so we can show their recipes
-    let user = this.userService.getUser();
+    let user = this._userService.getUser();
     if (!user) {
-      this.router.navigateByUrl('');
+      this._router.navigateByUrl('');
       return;
     }
     this._recipes = user.recipes;
   }
 
   public createRecipe() {
-    this.router.navigateByUrl('createRecipe');
+    this._router.navigateByUrl('createRecipe');
   }
 }

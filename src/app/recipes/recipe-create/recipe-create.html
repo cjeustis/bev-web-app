@@ -1,68 +1,86 @@
+<style>
+  .fa {
+    height: 14px;
+    width: 14px;
+  }
+</style>
+
 <div class="jumbotron">
-    <h2>Create a New Recipe</h2>
-    <div [hidden]="!_response" class="alert alert-danger">{{ _response }}</div>
-    <form [formGroup]="_createRecipeForm" novalidate (ngSubmit)="createRecipe(_createRecipeForm.value)">
+  <h2 style="margin-top: 0px; margin-bottom: 20px;">Create a New Recipe</h2>
+
+  <div [hidden]="!_response" class="alert alert-danger">{{ _response }}</div>
+
+  <form [formGroup]="_createRecipeForm" novalidate (ngSubmit)="createRecipe(_createRecipeForm.value)">
       
-      <!-- Recipe Name -->
-      <div class="form-group">
-        <label>Recipe Name</label><br/>
-        <input type="text" formControlName="name">
-        <small *ngIf="!_createRecipeForm.controls.name.valid" class="text-danger">
-          Recipe name is required (minimum 5 characters)
-        </small>
+    <!-- Recipe Name -->
+    <div class="form-group">
+      <label>Recipe Name</label>
+      <div class="input-group">
+        <span class="input-group-addon" id="recipe-name"><i class="fa fa-user" aria-hidden="true"></i></span>
+        <input type="text" class="form-control" placeholder="Recipe name..." aria-describedby="recipe-name" formControlName="name">
       </div>
-      <!-- Recipe Image -->
-      <div class="form-group">
-        <label>Recipe Image</label><br/>
-        <input type="text" formControlName="imageUrl">
-        <small *ngIf="!_createRecipeForm.controls.imageUrl.valid" class="text-danger">
-          Recipe image is required (minimum 5 characters)
-        </small>
+      <div [hidden]="_createRecipeForm.controls.name.valid || _createRecipeForm.controls.name.pristine" class="alert alert-danger">Recipe name is required</div>
+    </div>
+
+    <!-- Recipe Image -->
+    <div class="form-group">
+      <label>Recipe Image URL</label>
+      <div class="input-group">
+        <span class="input-group-addon" id="image-url"><i class="fa fa-file-image-o" aria-hidden="true"></i></span>
+        <input type="text" class="form-control" placeholder="Image URL..." aria-describedby="image-url" formControlName="imageUrl">
       </div>
+      <div [hidden]="_createRecipeForm.controls.imageUrl.valid || _createRecipeForm.controls.imageUrl.pristine" class="alert alert-danger">Image URL is required</div>
+    </div>
 
-      <div formArrayName="ingredients">
-        <div *ngFor="let ingredient of _createRecipeForm.controls.ingredients.controls; let location=index" class="panel panel-default">
-          <div class="panel-headeing">
-            <span>Ingredient {{ location + 1 }}</span>
-            <span class="pull-right" *ngIf="_createRecipeForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(location)">X</span>
-          </div>
-          
-          <div [formGroupName]="location">
-            <div class="panel-body">
-              <div class="form-group col-xs-6">
-                <label>Ingredient Name</label><br/>
-                <input type="text" formControlName="name">
-                <small [hidden]="_createRecipeForm.controls.ingredients.controls[location].controls.name.valid" class="text-danger">
-                  Ingredient name is required (minimum 5 characters)
-                </small>
-              </div>
+    <div formArrayName="ingredients">
+      <div *ngFor="let ingredient of _createRecipeForm.controls.ingredients.controls; let location=index" class="panel panel-default">
+        <div class="panel-heading">
+          <span>Ingredient {{ location + 1 }}</span>
+          <button type="button" class="btn btn-danger btn-xs pull-right" *ngIf="_createRecipeForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(location)">Remove ingredient</button>
+        </div>
+        
+        <div [formGroupName]="location">
+          <div class="panel-body">
 
-              <!-- Ingredient Amount -->
-              <div>
-                <label>Amount</label><br/>
-                <input type="number" formControlName="amount">
-                <small [hidden]="_createRecipeForm.controls.ingredients.controls[location].controls.amount.valid" class="text-danger">
-                  Ingredient amount is required
-                </small>
+            <!-- Ingredient Name -->
+            <div class="form-group">
+              <label>Ingredient Name</label>
+              <div class="input-group">
+                <span class="input-group-addon" id="ingredient-name"><i class="fa fa-beer" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="Ingredient name..." aria-describedby="ingredient-url" formControlName="name">
               </div>
+              <div [hidden]="_createRecipeForm.controls.ingredients.controls[location].controls.name.valid || _createRecipeForm.controls.ingredients.controls[location].controls.name.pristine" class="alert alert-danger">Ingredient name is required</div>
+            </div>
 
-              <!-- Ingredient Notes -->
-              <div>
-                <label>Notes</label><br/>
-                <input type="text" formControlName="notes">
+            <!-- Ingredient Amount -->
+            <div class="form-group">
+              <label>Amount</label>
+              <div class="input-group">
+                <span class="input-group-addon" id="ingredient-amount"><i class="fa fa-sort" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="Amount..." aria-describedby="ingredient-amount" formControlName="amount">
               </div>
+              <div [hidden]="_createRecipeForm.controls.ingredients.controls[location].controls.amount.valid || _createRecipeForm.controls.ingredients.controls[location].controls.amount.pristine" class="alert alert-danger">Amount is required</div>
+            </div>
+
+            <!-- Ingredient Notes -->
+            <div class="form-group">
+              <label>Notes</label>
+              <div class="input-group">
+                <span class="input-group-addon" id="ingredient-notes"><i class="fa fa-sticky-note-o" aria-hidden="true"></i></span>
+                <input type="text" class="form-control" placeholder="Notes..." aria-describedby="ingredient-notes" formControlName="notes">
+              </div>
+              <div [hidden]="_createRecipeForm.controls.ingredients.controls[location].controls.notes.valid || _createRecipeForm.controls.ingredients.controls[location].controls.notes.pristine" class="alert alert-danger">Notes is required</div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="margin-20">
-        <a (click)="addIngredient()" style="cursor: default">
-          Add another ingredient +
-        </a>
-      </div>
+    <!-- Add ingredient -->
+    <button type="button" class="btn btn-info pull-right" (click)="addIngredient()">Add ingredient</button>
 
-      <!-- Submit Button -->
-      <button type="submit" class="btn btn-primary" [disabled]="!_createRecipeForm.valid">Submit</button>
-    </form>
-  </div>
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary pull-left" [disabled]="!_createRecipeForm.valid">Submit</button>
+
+  </form>
+</div>

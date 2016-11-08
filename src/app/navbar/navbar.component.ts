@@ -11,14 +11,14 @@ export class NavbarComponent {
   @Input() brand: string;
   private _response: string;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private _userService: UserService, private _router: Router) {
   }
 
   public signOut(): void {
-    this.userService.signOutUser()
+    this._userService.signOutUser()
       .subscribe((res: any) => {
         console.log(res);
-        this.router.navigateByUrl('/');
+        this._router.navigateByUrl('/');
       }, (err: any) => {
         this._response = err;
         console.log(err);

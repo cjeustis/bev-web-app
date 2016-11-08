@@ -41,7 +41,7 @@ export class UserService {
   private _apiUrl: string = 'http://localhost:8888/api/users';
   private _token: string;
 
-  constructor(private http: Http) {
+  constructor(private _http: Http) {
   }
 
   /* Log in a user - requires username and password */
@@ -57,7 +57,7 @@ export class UserService {
       })
     });
 
-    return this.http.post(this._apiUrl + '/login', params, options)
+    return this._http.post(this._apiUrl + '/login', params, options)
       .map((res: Response) => {
         this._user = res.json().user;
         this._token = res.json().token;
@@ -84,7 +84,7 @@ export class UserService {
       })
     });
 
-    return this.http.post(this._apiUrl + '/register', params, options)
+    return this._http.post(this._apiUrl + '/register', params, options)
       .map((res: Response) => {
         this._user = res.json().user;
         this._token = res.json().token;
@@ -104,7 +104,7 @@ export class UserService {
       })
     });
 
-    return this.http.post(this._apiUrl + '/' + this._user.id + '/recipes', JSON.stringify(recipe), options)
+    return this._http.post(this._apiUrl + '/' + this._user.id + '/recipes', JSON.stringify(recipe), options)
       .map((res: Response) => {
         // Add recipe to user
         this._user.recipes.push(res.json());
@@ -123,7 +123,7 @@ export class UserService {
         'Auth-Token': this._token
       })
     });
-    return this.http.post(this._apiUrl + '/' + this._user.id + '/logout', null, options)
+    return this._http.post(this._apiUrl + '/' + this._user.id + '/logout', null, options)
       .map((res: Response) => {
         this.authenticated = false;
         return res.json();

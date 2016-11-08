@@ -26,10 +26,8 @@ export class CreateRecipeComponent implements OnInit {
       return;
     }
     this._createRecipeForm = this._fb.group({
-      name: [''],
+      name: ['', [Validators.required, Validators.minLength(5)]],
       imageUrl: [''],
-      // name: ['', [Validators.required, Validators.minLength(5)]],
-      // image: ['', Validators.required, Validators.minLength(5)],
       ingredients: this._fb.array([
         this.initIngredients()
       ])
@@ -59,9 +57,9 @@ export class CreateRecipeComponent implements OnInit {
 
   private initIngredients() {
     return this._fb.group({
-      name: [''],
-      amount: [''],
-      notes: ['', Validators.maxLength(255)]
+      name: ['', Validators.required],
+      amount: ['', Validators.required],
+      notes: ['']
     });
   }
 }
