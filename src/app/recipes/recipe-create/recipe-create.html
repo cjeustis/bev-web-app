@@ -1,1 +1,68 @@
-Soon you will be able to create a new recipe...soon.
+<div class="jumbotron">
+    <h2>Create a New Recipe</h2>
+    <div [hidden]="!_response" class="alert alert-danger">{{ _response }}</div>
+    <form [formGroup]="_createRecipeForm" novalidate (ngSubmit)="createRecipe(_createRecipeForm.value)">
+      
+      <!-- Recipe Name -->
+      <div class="form-group">
+        <label>Recipe Name</label><br/>
+        <input type="text" formControlName="name">
+        <small *ngIf="!_createRecipeForm.controls.name.valid" class="text-danger">
+          Recipe name is required (minimum 5 characters)
+        </small>
+      </div>
+      <!-- Recipe Image -->
+      <div class="form-group">
+        <label>Recipe Image</label><br/>
+        <input type="text" formControlName="imageUrl">
+        <small *ngIf="!_createRecipeForm.controls.imageUrl.valid" class="text-danger">
+          Recipe image is required (minimum 5 characters)
+        </small>
+      </div>
+
+      <div formArrayName="ingredients">
+        <div *ngFor="let ingredient of _createRecipeForm.controls.ingredients.controls; let location=index" class="panel panel-default">
+          <div class="panel-headeing">
+            <span>Ingredient {{ location + 1 }}</span>
+            <span class="pull-right" *ngIf="_createRecipeForm.controls.ingredients.controls.length > 1" (click)="removeIngredient(location)">X</span>
+          </div>
+          
+          <div [formGroupName]="location">
+            <div class="panel-body">
+              <div class="form-group col-xs-6">
+                <label>Ingredient Name</label><br/>
+                <input type="text" formControlName="name">
+                <small [hidden]="_createRecipeForm.controls.ingredients.controls[location].controls.name.valid" class="text-danger">
+                  Ingredient name is required (minimum 5 characters)
+                </small>
+              </div>
+
+              <!-- Ingredient Amount -->
+              <div>
+                <label>Amount</label><br/>
+                <input type="number" formControlName="amount">
+                <small [hidden]="_createRecipeForm.controls.ingredients.controls[location].controls.amount.valid" class="text-danger">
+                  Ingredient amount is required
+                </small>
+              </div>
+
+              <!-- Ingredient Notes -->
+              <div>
+                <label>Notes</label><br/>
+                <input type="text" formControlName="notes">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="margin-20">
+        <a (click)="addIngredient()" style="cursor: default">
+          Add another ingredient +
+        </a>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary" [disabled]="!_createRecipeForm.valid">Submit</button>
+    </form>
+  </div>

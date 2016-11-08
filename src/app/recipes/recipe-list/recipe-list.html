@@ -1,80 +1,58 @@
 <style>
-  .content-grid.mdl-grid {
-    margin: auto;
+  .recipe-card.mdl-card {
+    width: 350;
+    height: 400px;
+    margin: 10px;
   }
-  .mdl-cell {
-    margin-right: 10px;
-    padding: 20px;
-    background-color: #f3f3f3;
-    width: calc(calc(100% - 100px) / 4);
-    min-width: 150px;
+  .recipe-card > .mdl-card__title {
+    color: #fff;
+    background-color: #46B6AC !important;
+    background-position: center right !important;
+    background-repeat: no-repeat !important;
+    background-size: contain !important;
   }
-  @media screen and (max-width: 1024px) {
-    .mdl-cell {
-      padding: 20px;
-      background-color: #f3f3f3;
-      width: calc(calc(100% - 100px) / 2);
-      min-width: 200px;
-    }
-  }
-  img {
-    width: 100%;
-  }
-  img.card-image {
-    max-height: 200px;
+  .mdl-card__supporting-text {
+    height: 175px;
   }
 </style>
 
+
 <div class="content-grid mdl-grid">
 
-  <div *ngFor="let recipe of _recipes" class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
-    <figure class="mdl-card__media">
-      <img class="card-image" src="{{ recipe.imgUrl }}" alt="" />
-    </figure>
-    <div class="mdl-card__title">
-      <h1 class="mdl-card__title-text">{{ recipe.name }}</h1>
+  <div *ngFor="let recipe of _recipes" class="recipe-card mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand" [ngStyle]="{'background': 'url(' + recipe.imageUrl + ')'}">
+      <h2 class="mdl-card__title-text">{{ recipe.name }}</h2>
     </div>
     <div class="mdl-card__supporting-text">
-      <h5>Ingredients:</h5>
-      <span>
-        <ul>
-          <li *ngFor="let ingredient of recipe.ingredients">
-            {{ ingredient.name }}
-          </li>
-        </ul>
+      <h4>Ingredients:</h4>
+      <span *ngFor="let ingredient of recipe.ingredients">
+        <span><h5>{{ ingredient.name }}: ({{ ingredient.amount}} ounces)</h5></span>
+        <span><h6><i>{{ ingredient.notes }}</i></h6></span>
       </span>
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">More...</a>
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        More...
+      </a>
     </div>
   </div>
 
   <!-- Show a card to create a new recipe -->
-  <div class="mdl-card mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-shadow--2dp">
-    <figure class="mdl-card__media">
-      <img class="card-image" src="" alt="" />
-    </figure>
-    <div class="mdl-card__title">
-      <h1 class="mdl-card__title-text">Recipe Name Here</h1>
+  <div class="recipe-card mdl-card mdl-shadow--2dp">
+    <div class="mdl-card__title mdl-card--expand">
+      <h2 class="mdl-card__title-text">Create a new recipe...</h2>
     </div>
     <div class="mdl-card__supporting-text">
-      <h5>Ingredients:</h5>
-      <span>
-        <ul>
-          <li>
-            Ingredient One (2 ounces)
-          </li>
-          <li>
-            Ingredient Two (3 ounces)
-          </li>
-          <li>
-            Ingredient Three (1.5 ouces)
-          </li>
-        </ul>
-      </span>
+      <h4>Ingredients:</h4>
+      <h6>
+        Each recipe contains ingredients where you can specify the amount of the ingredient,
+         along with any notes you would like to have stored with the ingredient.
+      </h6>
     </div>
     <div class="mdl-card__actions mdl-card--border">
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="createRecipe()">Create...</a>
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="createRecipe()">
+        Create...
+      </a>
     </div>
   </div>
 

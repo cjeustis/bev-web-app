@@ -10,6 +10,8 @@ export interface IIngredients {
   id: number;
   recipeID: number;
   name: string;
+  amount: number;
+  notes: string;
   apiUrl: string; // turn into function
 };
 
@@ -87,6 +89,25 @@ export class UserService {
         this._user = res.json().user;
         this._token = res.json().token;
         this.authenticated = true;
+        return this._user;
+      })
+      .catch((error: any) => {
+        return Observable.throw(error.json().error || 'Unable to complete request.');
+      });
+  }
+
+  public createRecipe(recipe: IRecipe): Observable<any> {
+    let options = new RequestOptions({
+      headers: new Headers({
+      'Content-type': 'application/json',
+      'Auth-Token': this._token
+      })
+    });
+
+    return this.http.post(this._apiUrl + '/' + this._user.id + '/recipes', JSON.stringify(recipe), options)
+      .map((res: Response) => {
+        // Add recipe to user
+        this._user.recipes.push(res.json());
         return this._user;
       })
       .catch((error: any) => {
