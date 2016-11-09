@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../userProvider/user.provider';
+import { UserProvider } from '../Providers/user-provider/user.provider';
 
 interface IRegisterForm {
   username: string;
@@ -19,7 +19,7 @@ export class SignUpComponent implements OnInit {
   private _registerForm: FormGroup;
   private _response: string;
 
-  constructor(private _fb: FormBuilder, private _userService: UserService, private _router: Router) {
+  constructor(private _fb: FormBuilder, private _userService: UserProvider, private _router: Router) {
   }
 
   ngOnInit() {

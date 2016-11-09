@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../userProvider/user.provider';
+import { UserProvider } from '../Providers/user-provider/user.provider';
 
 @Component({
   selector: 'as-navbar',
@@ -11,7 +11,7 @@ export class NavbarComponent {
   @Input() brand: string;
   private _response: string;
 
-  constructor(private _userService: UserService, private _router: Router) {
+  constructor(private _userService: UserProvider, private _router: Router) {
   }
 
   public signOut(): void {

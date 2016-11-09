@@ -1,14 +1,14 @@
-import {GraphService} from '../graphProvider/graph.provider';
+import {GraphProvider} from '../Providers/graph-provider/graph.provider';
 import {Component, OnInit} from '@angular/core';
 
 @Component({
   templateUrl: 'app/temp-plot/temp-plot.html',
-  providers: [GraphService]
+  providers: [GraphProvider]
 })
 
 export class TempPlotComponent implements OnInit {
 
-  constructor(private _graphService: GraphService) {
+  constructor(private _graphService: GraphProvider) {
   }
 
   ngOnInit() {

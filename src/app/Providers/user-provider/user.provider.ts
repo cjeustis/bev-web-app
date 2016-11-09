@@ -34,7 +34,7 @@ export interface IUser {
 };
 
 @Injectable()
-export class UserService {
+export class UserProvider {
 
   public authenticated: boolean = false;
   private _user: IUser;

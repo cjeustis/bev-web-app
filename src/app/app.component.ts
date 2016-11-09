@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { CONSTANTS } from './shared';
-import { UserService } from './userProvider/user.provider';
+import { UserProvider } from './Providers/user-provider/user.provider';
 
 @Component({
   selector: 'as-app',
   templateUrl: 'app/app.html',
-  providers: [UserService]
+  providers: [UserProvider]
 })
 export class AppComponent {
   public appBrand: string;

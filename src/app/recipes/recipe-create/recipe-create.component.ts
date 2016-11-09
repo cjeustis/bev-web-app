@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
-import { UserService, IUser, IRecipe } from '../../userProvider/user.provider';
+import { UserProvider, IUser, IRecipe } from '../../Providers/user-provider/user.provider';
 import { Router } from '@angular/router';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 
@@ -15,7 +15,7 @@ export class CreateRecipeComponent implements OnInit {
   private _user: IUser;
   private _response: string;
 
-  constructor(private _fb: FormBuilder, private _userService: UserService, private _router: Router) {
+  constructor(private _fb: FormBuilder, private _userService: UserProvider, private _router: Router) {
   }
 
   ngOnInit() {

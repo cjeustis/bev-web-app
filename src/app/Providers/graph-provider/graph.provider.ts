@@ -9,7 +9,7 @@ interface IChartData {
 };
 
 @Injectable()
-export class GraphService {
+export class GraphProvider {
 
   private _chartData: IChartData;
 
